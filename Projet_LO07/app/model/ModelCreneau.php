@@ -65,19 +65,19 @@ class ModelCreneau {
     try {
       $db = Model::getInstance();
 
-      // ✅ Vérification du format attendu : 'Y-m-d H:i:s'
+      // Vérification du format attendu : 'Y-m-d H:i:s'
       $dt = DateTime::createFromFormat('Y-m-d H:i:s', $datetime);
       if (!$dt) {
         $_SESSION['flash'] .= " Format datetime invalide : '$datetime'";
         return -1;
       }
 
-      // 🔢 Récupération du prochain ID manuellement
+      // Récupération du prochain ID manuellement
       $stmt = $db->query("SELECT MAX(id) FROM creneau");
       $maxId = $stmt->fetchColumn();
       $nextId = is_null($maxId) ? 1 : $maxId + 1;
 
-      // ✅ Insertion
+      // Insertion
       $sql = "INSERT INTO creneau (id, projet, examinateur, creneau)
               VALUES (:id, :pid, :eid, :dt)";
       $stmt = $db->prepare($sql);
