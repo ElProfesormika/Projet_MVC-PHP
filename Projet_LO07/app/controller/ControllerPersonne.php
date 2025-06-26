@@ -68,7 +68,7 @@ public static function personneRegister($args = []) {
   $roles = $_POST['roles'] ?? [];
 
   if (empty($nom) || empty($prenom) || empty($login) || empty($password)) {
-    $_SESSION['flash'] = "❗Tous les champs sont obligatoires.";
+    $_SESSION['flash'] = "Tous les champs sont obligatoires.";
     header("Location: router1.php?action=create");
     exit();
   }
