@@ -10,7 +10,7 @@ require($root . '/app/view/fragment/fragmentCaveHeader.html');
     include $root . '/app/view/fragment/fragmentCaveFlash.html';
   ?>
 
-  <h2>🧱 Optimisation de la structure MVC</h2>
+  <h2>Optimisation de la structure MVC</h2>
 
   <p>Nous proposons ici une amélioration de la structure MVC :</p>
   <ul>
