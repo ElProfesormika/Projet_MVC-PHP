@@ -1,0 +1,17 @@
+<!-- ===== début fragmentCaveJumbotron.html -->
+<div class="p-4 mb-4 bg-light border rounded-3 shadow-sm">
+  <div class="container-fluid py-2">
+    <h2 class="display-6 fw-bold text-success">
+  <?php if (isset($_SESSION['user'])): ?>
+    Bonjour <?= htmlspecialchars($_SESSION['user']['prenom'] ?? '') ?> 
+  <?php else: ?>
+    Bienvenue sur la plateforme de gestion des soutenances
+  <?php endif; ?>
+</h2>
+
+    <p class="col-md-10 fs-5">
+      Cet espace vous permet de gérer vos projets, créneaux, et rendez-vous en fonction de votre rôle (étudiant, examinateur, responsable).
+    </p>
+  </div>
+</div>
+<!-- ===== fin fragmentCaveJumbotron.html -->

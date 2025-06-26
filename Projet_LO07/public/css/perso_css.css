@@ -1,0 +1,13 @@
+body {
+    background-color: #f0f8ff; /* un blanc bleuté très clair */
+}
+
+.container {
+    margin-top: 80px;
+    background-color: #90ee90; /* un vert clair, un peu plus doux que greenyellow */
+    width: 60%;
+}
+
+.jumbotron {
+    background-color: #dda0dd; /* un mauve doux, plus pastel que plum */
+}

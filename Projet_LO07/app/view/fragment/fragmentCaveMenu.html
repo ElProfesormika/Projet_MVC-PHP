@@ -1,0 +1,114 @@
+<!-- ----- début fragmentCaveMenu -->
+<?php
+$user = $_SESSION['user'] ?? null;
+?>
+
+<nav class="navbar navbar-expand-lg bg-success fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white fw-bold" href="router1.php?action=accueil">
+      Soutenances - YABRE-FOTIO_NGNINLAJUNG
+      <?php if ($user): ?>
+        | <?= strtoupper($user['nom']) . " " . ucfirst($user['prenom']) ?>
+      <?php endif; ?>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <?php if ($user): ?>
+
+          <!-- Rôle : Responsable -->
+          <?php if (!empty($user['role_responsable'])): ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                 Responsable
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="router1.php?action=projetMesProjets">Liste de mes projets</a></li>
+                <li><a class="dropdown-item" href="router1.php?action=projetCreate">Ajout d'un projet</a></li>
+                <li><a class="dropdown-item" href="router1.php?action=examinateurList">Liste des examinateurs</a></li>
+                <li><a class="dropdown-item" href="router1.php?action=examinateurAdd">Ajout d'un examinateur</a></li>
+                <li><a class="dropdown-item" href="router1.php?action=examinateursParProjet">Liste des examinateurs d’un projet</a></li>
+                <li><a class="dropdown-item" href="router1.php?action=planningProjet">Planning d’un projet</a></li>
+              </ul>
+            </li>
+          <?php endif; ?>
+
+          <!-- Rôle : Examinateur -->
+          <?php if (!empty($user['role_examinateur'])): ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                 Examinateur
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="router1.php?action=projetsAvecCreneaux">Liste des projets</a></li>
+                <li><a class="dropdown-item" href="router1.php?action=examinateurPlanning">Liste de mes créneaux</a></li>
+                <li><a class="dropdown-item" href="router1.php?action=examinateurCreneauxParProjet">Mes créneaux pour un projet</a></li>
+                <li><a class="dropdown-item" href="router1.php?action=creneauCreate">Ajouter un créneau</a></li>
+                <li><a class="dropdown-item" href="router1.php?action=creneauCreateSerie">Ajouter une liste de créneaux</a></li>
+              </ul>
+            </li>
+          <?php endif; ?>
+
+          <!-- Rôle : Étudiant -->
+          <?php if (!empty($user['role_etudiant'])): ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                Étudiant
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="router1.php?action=etudiantMesRdv">Liste de mes rendez-vous</a></li>
+                <li><a class="dropdown-item" href="router1.php?action=etudiantVoirCreneaux">Prendre un RDV</a></li>
+              </ul>
+            </li>
+          <?php endif; ?>
+
+          <!-- Menu Innovations (toujours accessible) -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+               Innovations
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="router1.php?action=Proposition1">Proposition 1 : Fonctionnalité originale</a></li>
+              <li><a class="dropdown-item" href="router1.php?action=Proposition2">Proposition 2 : Amélioration MVC</a></li>
+            </ul>
+          </li>
+
+          <!-- Déconnexion -->
+          <li class="nav-item">
+            <a class="nav-link text-white" href="router1.php?action=personneLogout"> Déconnexion</a>
+          </li>
+
+        <?php else: ?>
+
+          <!-- Connexion et inscription -->
+          <li class="nav-item">
+            <a class="nav-link text-white" href="router1.php?action=personneLogin">Connexion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="router1.php?action=create"> S’inscrire</a>
+          </li>
+
+          <!-- Menu Innovations (accessible hors connexion) -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+               Innovations
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="router1.php?action=Proposition1">Proposition 1 : Fonctionnalité originale</a></li>
+              <li><a class="dropdown-item" href="router1.php?action=Proposition2">Proposition 2 : Amélioration MVC</a></li>
+            </ul>
+          </li>
+
+        <?php endif; ?>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- ----- fin fragmentCaveMenu -->
